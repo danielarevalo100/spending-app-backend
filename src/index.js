@@ -10,7 +10,7 @@ app.set('port', process.env.PORT || 8080)
 // Middlewares
 app.use(morgan('dev'));
 app.use(express.json())
-// Routes
+// Routess
 
 app.use(cors())
 app.use('/api/tasks', require('./routes/task.routes'))
