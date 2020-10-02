@@ -13,6 +13,8 @@ app.use(express.json())
 // Routess
 
 app.use(cors())
+
+app.use('/api/transactions',require('./routes/transactions.routes'))
 app.use('/api/tasks', require('./routes/task.routes'))
 app.use('/api/users', require('./routes/users.routes'))
 // Static files

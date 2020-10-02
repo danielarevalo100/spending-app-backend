@@ -31,7 +31,7 @@ router.post('/login',checkheadertoken,async (req,res) =>{
     const token=null
     if("tokenData" in req){
         const user = await User.findById(req.tokenData.id)
-        console.log('user',user)
+        
         res.status(200).json({data:{user}})
     }else{
 
@@ -64,7 +64,7 @@ function checkheadertoken(req,res,next){
                 next()
             }else{
                 req.tokenData=data
-                console.log(data)
+                
                 next()
             }
         })
@@ -97,7 +97,7 @@ function checkheadertoken(req,res,next){
 
 router.post('/', async (req,res) => {
     const {userName,password}=req.body
-    console.log(password)
+    
     if(!userName || !password){
         res.status(403).json({
             status:"wrong Parameters"
