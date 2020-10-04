@@ -39,7 +39,7 @@ router.post('/login',checkheadertoken,async (req,res) =>{
 
             const {password} = req.body
             
-            const user = await User.findOne({password},{password:0,_id:0})
+            const user = await User.findOne({password},{password:0})
             
             if(user){
                 const token = jwt.sign({id:user._id},'Daniel',{

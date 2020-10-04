@@ -4,11 +4,15 @@ const Transaction = require("../models/transaction");
 const User = require("../models/user");
 const jwt = require('jsonwebtoken')
 
-router.get('/:id', async (req,res)=>{
-    
-    const transaction = await Transaction.find({userId:req.params.id}).sort({date:-1})
-    console.log(req.params)
-    res.status(200).json(transaction)
+router.get('/',checkheadertoken, async (req,res)=>{
+    if(req.tokenData){
+        const {id}= req.tokenData
+        const transaction = await Transaction.find({userId:id}).sort({date:-1})
+        console.log(req.params)
+        res.status(200).json(transaction)
+    }else{
+        res.status(403).json({message:'access denied'})
+    }
 })
 router.post('/',checkheadertoken,async (req,res)=>{
     if(!req.tokenData) res.status(202).json({message:'No user found'})
