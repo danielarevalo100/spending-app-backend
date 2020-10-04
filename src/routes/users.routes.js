@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken')
 
 
 router.get('/', async (req, res) => {
-    const users = await User.find();
+    const users = await User.find({},{password:0});
 
     // console.log(tasks)
     // res.json(tasks)
@@ -30,7 +30,7 @@ router.get('/', async (req, res) => {
 router.post('/login',checkheadertoken,async (req,res) =>{
     const token=null
     if("tokenData" in req){
-        const user = await User.findById(req.tokenData.id)
+        const user = await User.findById(req.tokenData.id,{password:0,_id:0})
         
         res.status(200).json({data:{user}})
     }else{
@@ -39,7 +39,7 @@ router.post('/login',checkheadertoken,async (req,res) =>{
 
             const {password} = req.body
             
-            const user = await User.findOne({password})
+            const user = await User.findOne({password},{password:0,_id:0})
             
             if(user){
                 const token = jwt.sign({id:user._id},'Daniel',{

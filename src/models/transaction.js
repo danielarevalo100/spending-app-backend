@@ -10,7 +10,8 @@ const TransactionSchema = new Schema({
     status:{type: String, default:'PENDING'},
     email:{type: String,required: true},
     type:{type: String,required: true},
-    image:{type: String}
+    image:{type: String}, 
+    name:{type: String}
 });
 
 module.exports = mongoose.model('Transaction', TransactionSchema)
