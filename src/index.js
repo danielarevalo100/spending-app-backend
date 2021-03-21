@@ -17,6 +17,7 @@ app.use(cors())
 app.use('/api/transactions',require('./routes/transactions.routes'))
 app.use('/api/tasks', require('./routes/task.routes'))
 app.use('/api/users', require('./routes/users.routes'))
+app.use('/api/admin', require('./routes/admin.routes'))
 // Static files
 app.use(express.static(path.join(__dirname,'public')));
 console.log(path.join(__dirname,'public'));

@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 
 
 const TransactionSchema = new Schema({
-    userId:{type: String, required: true},
+    userId:{type: mongoose.Schema.ObjectId, required: true},
     amount:{type: Number, required: true},
     date:{type: Date, default: Date.now},
     status:{type: String, default:'PENDING'},
